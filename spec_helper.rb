@@ -9,6 +9,10 @@ class Configuration
   ATTRIBUTES = [:urls_that_should_redirect, :redirect_destination, :urls_that_should_load_secure_page, :urls_that_should_load_page_with_non_matching_ssl_certificates, :urls_that_should_load_insecure_page]
   attr_reader *ATTRIBUTES
   def initialize
+    unless File.exists?('config.yml')
+      puts "Please copy config.yml.example to config.yml and set appropriate values"
+      exit
+    end
     config = YAML.load File.open('config.yml')
     ATTRIBUTES.each { |attr| instance_variable_set("@#{attr}", config[attr.to_s]) }
     @urls_that_should_load_secure_page += [redirect_destination]
