@@ -1,0 +1,11 @@
+urls_that_should_redirect:
+  - site1.example.com
+  - site2.example.com
+redirect_destination: example.com
+urls_that_should_load_secure_page:
+  - www.example.com
+urls_that_should_load_page_with_non_matching_ssl_certificates:
+  - qa.example.com
+urls_that_should_load_insecure_page:
+  - localhost:3000
+
